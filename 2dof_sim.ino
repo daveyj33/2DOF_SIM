@@ -17,20 +17,20 @@ void setup() {
   Serial.begin(9600);
   myservo1.attach(18);  // Attach Servos
   myservo2.attach(17);
-  }
-
-void loop() {
-
-  t = (t + .01);
-  if (t <= 1) {
-    Serial.println("What is the value of X?");
+   Serial.println("What is the value of X?");
   while (Serial.available() == 0) {}
   X = Serial.parseFloat();
     Serial.println("What is the value of Y?");
   while (Serial.available() == 0) {}
   Y = Serial.parseFloat();
   delay(500);
-    //Serial.print("t=");
+  }
+
+void loop() {
+
+  t = (t + .01);
+  if (t <= 1) {
+       //Serial.print("t=");
     //Serial.println(t);
     xt = X * t;
     yt = Y * t;
