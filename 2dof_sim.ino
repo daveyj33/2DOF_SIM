@@ -50,7 +50,7 @@ void loop() {
     Serial.print(T1);
     Serial.print("\t");
     Serial.print("T2=");
-    Serial.print(T2);
+    Serial.println(T2);
     // Angles adjusted within servo span
     theta1 = 180 - T1;
     theta2 = 90 - T2;
@@ -61,6 +61,6 @@ void loop() {
 
   else {
     Serial.println("Program Ended");
-    delay(2000);
+    delay(20000);
   }
 }
