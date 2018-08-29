@@ -1,2 +1,2 @@
 # 2DOF_SIM
-Inverse Kinematics for 2DOF using Arduino
+2DOF Inverse Kinematics using Arduino
