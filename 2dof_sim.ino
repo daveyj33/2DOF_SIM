@@ -7,9 +7,6 @@ float a2 = 1;
 float a4 = 1;
 float X;
 float Y;
-float xt;
-float yt;
-float t;
 float phi1, phi2, phi3, r1, T1, T2, theta1, theta2;
 
 
@@ -17,26 +14,21 @@ void setup() {
   Serial.begin(9600);
   myservo1.attach(18);  // Attach Servos
   myservo2.attach(17);
-   Serial.println("What is the value of X?");
+  
+  }
+
+void loop() {
+  Serial.println("What is the value of X?");
   while (Serial.available() == 0) {}
   X = Serial.parseFloat();
     Serial.println("What is the value of Y?");
   while (Serial.available() == 0) {}
   Y = Serial.parseFloat();
   delay(500);
-  }
-
-void loop() {
-
-  t = (t + .01);
-  if (t <= 1) {
-       //Serial.print("t=");
-    //Serial.println(t);
-    xt = X * t;
-    yt = Y * t;
-    r1 = sqrt(xt * xt + yt * yt);
+  
+    r1 = sqrt(X * X + Y * Y);
     phi1 = acos(((a4 * a4) - (a2 * a2) - (r1 * r1)) / (-2 * a2 * r1));
-    phi2 = atan2(yt, xt);
+    phi2 = atan2(Y, X);
     phi3 = acos(((r1 * r1) - (a2 * a2) - (a4 * a4)) / (-2 * a2 * a4));
     //Theta 1 in radians
     T1 = phi2 - phi1;
@@ -57,10 +49,9 @@ void loop() {
    //Send command to servo to 
     myservo1.write(theta1);
     myservo2.write(theta2);
+  
+    Serial.println("############################");
+    delay(1000);
   }
 
-  else {
-    Serial.println("Program Ended");
-    delay(20000);
-  }
-}
+
